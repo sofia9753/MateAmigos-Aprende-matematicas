@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#6c5ce7">
+  <meta name="description" content="MateAmigos: aprende matemáticas y álgebra paso a paso con ejercicios, juegos y seguimiento personalizado.">
+  <title>MateAmigos — Aprende matemáticas a tu ritmo</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" data-view="home" aria-label="MateAmigos inicio">
+      <span class="brand-mark">∑</span><span>Mate<span class="brand-accent">Amigos</span><small>APRENDE A TU RITMO</small></span>
+    </a>
+    <div class="nav-caption">TU ESPACIO</div>
+    <nav class="navigation" aria-label="Navegación principal">
+      <button class="nav-item active" data-view="home"><span>⌂</span> Inicio</button>
+      <button class="nav-item" data-view="learn"><span>▤</span> Aprender</button>
+      <button class="nav-item" data-view="practice"><span>✎</span> Practicar</button>
+      <button class="nav-item" data-view="games"><span>✦</span> Juegos</button>
+      <button class="nav-item" data-view="progress"><span>↗</span> Mi progreso</button>
+      <button class="nav-item" data-view="settings"><span>⚙</span> Ajustes</button>
+    </nav>
+    <div class="sidebar-note"><span class="note-icon">✦</span><b>Un paso a la vez</b><p>No necesitas saberlo todo hoy. Cada ejercicio te ayuda a crecer.</p></div>
+    <div class="sidebar-footer"><span class="online-dot"></span> Tu espacio de aprendizaje</div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menú">☰</button>
+      <div class="greeting"><div class="eyebrow" id="todayLabel">TU AVENTURA DE HOY</div><h1 id="greetingTitle">¡Hola, estudiante! <span>✦</span></h1><p>Un ratito de práctica puede hacer una gran diferencia.</p></div>
+      <div class="top-metrics"><div class="top-metric"><span class="metric-icon flame">♨</span><span><b id="topStreak">0 días</b><small>Racha</small></span></div><div class="top-metric"><span class="metric-icon star">★</span><span><b id="topXP">0 XP</b><small>Experiencia</small></span></div><button class="avatar" id="profileBtn" title="Editar perfil">M</button></div>
+    </header>
+
+    <section class="view active" id="view-home">
+      <div class="hero">
+        <div class="hero-copy"><span class="hero-kicker"><span class="sparkle">✦</span> TU SIGUIENTE GRAN LOGRO</span><h2>Las matemáticas<br>sí pueden ser <em>divertidas.</em></h2><p>Aprende a tu ritmo con explicaciones claras, retos que se adaptan a ti y un profe virtual que te acompaña.</p><button class="button button-white" data-go="learn">Continuar aprendiendo <span>→</span></button></div>
+        <div class="hero-illustration" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="float-card float-card-one">x + 3 = 8</div><div class="float-card float-card-two">★ +10 XP</div><div class="hero-mascot">∑</div><div class="hero-spark spark-a">✦</div><div class="hero-spark spark-b">✧</div></div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-icon icon-lilac">◎</div><div><span>Precisión</span><strong id="statAccuracy">—</strong><small>de tus respuestas</small></div></article>
+        <article class="stat-card"><div class="stat-icon icon-peach">✎</div><div><span>Práctica</span><strong id="statAnswered">0</strong><small>ejercicios respondidos</small></div></article>
+        <article class="stat-card"><div class="stat-icon icon-yellow">♨</div><div><span>Constancia</span><strong id="statStreak">0 días</strong><small>racha de aprendizaje</small></div></article>
+        <article class="stat-card"><div class="stat-icon icon-mint">♜</div><div><span>Logros</span><strong id="statBadges">0</strong><small>metas desbloqueadas</small></div></article>
+      </div>
+
+      <div class="section-heading"><div><div class="eyebrow">TU RUTA PERSONAL</div><h2>¿Qué quieres aprender?</h2><p>Elige un tema para empezar a avanzar.</p></div><button class="text-button" data-go="learn">Ver todos los temas <span>→</span></button></div>
+      <div class="topic-grid" id="homeTopics"></div>
+
+      <div class="lower-grid">
+        <article class="panel daily-panel"><div class="panel-heading"><div><div class="eyebrow">PLAN RECOMENDADO</div><h2>Tu misión de hoy</h2></div><span class="panel-icon">✦</span></div>
+          <button class="mission-row" data-action="practice"><span class="mission-icon mission-purple">✎</span><span class="mission-copy"><b>Resolver 5 ejercicios</b><small>Refuerza lo que ya sabes.</small></span><span class="row-arrow">→</span></button>
+          <button class="mission-row" data-action="lesson"><span class="mission-icon mission-yellow">◈</span><span class="mission-copy"><b>Aprender un concepto</b><small>Un ejemplo explicado paso a paso.</small></span><span class="row-arrow">→</span></button>
+          <button class="mission-row" data-action="game"><span class="mission-icon mission-pink">✧</span><span class="mission-copy"><b>Completar un mini reto</b><small>Gana puntos mientras juegas.</small></span><span class="row-arrow">→</span></button>
+        </article>
+        <article class="panel streak-panel"><div class="panel-heading"><div><div class="eyebrow">TU CONSTANCIA</div><h2>La racha cuenta 🔥</h2></div><span class="streak-count" id="streakLarge">0</span></div><p>Practica un poquito cada día y observa cómo crece tu confianza.</p><div class="week-strip" id="weekStrip"></div><div class="streak-footer"><span>Tu meta diaria</span><b id="goalLabel">10 min</b></div><div class="thin-progress"><span id="goalProgress"></span></div><button class="text-button" data-go="settings">Configurar mi horario →</button></article>
+      </div>
+    </section>
+
+    <section class="view" id="view-learn">
+      <div class="page-heading"><div class="eyebrow">PASO A PASO</div><h1>Aprender <span class="heading-accent">sin miedo.</span></h1><p>Conceptos claros, ejemplos guiados y práctica a tu ritmo.</p></div>
+      <div class="learning-banner"><div><b>Una idea importante</b><p>En matemáticas, entender el porqué es tan importante como encontrar la respuesta.</p></div><span>💡</span></div>
+      <div class="topic-grid" id="learnTopics"></div>
+      <article class="panel lesson-detail" id="lessonDetail"><div class="empty-state"><span>📘</span><h2>Elige un tema para comenzar</h2><p>Verás una explicación sencilla y un ejemplo resuelto paso a paso aquí.</p></div></article>
+    </section>
+
+    <section class="view" id="view-practice">
+      <div class="page-heading"><div class="eyebrow">PRACTICA Y MEJORA</div><h1>Zona de <span class="heading-accent">práctica.</span></h1><p>Inténtalo, pide una pista y aprende de cada respuesta.</p></div>
+      <div class="practice-layout">
+        <article class="panel quiz-panel">
+          <div class="quiz-top"><span class="topic-chip" id="quizTopic">Álgebra · Nivel inicial</span><span class="question-number" id="questionNumber">Pregunta 1</span></div>
+          <div class="quiz-progress"><span id="questionProgress"></span></div>
+          <div class="question-content"><div class="question-label">TU RETO</div><h2 id="questionText">Pulsa «Comenzar» para recibir tu primer reto.</h2><p id="questionHelp">Piensa en los pasos. Puedes pedir una pista si te atascas.</p></div>
+          <div class="answer-row"><input id="answerInput" placeholder="Escribe tu respuesta…" aria-label="Tu respuesta" autocomplete="off"><button class="button button-primary" id="checkAnswer">Comprobar <span>→</span></button></div>
+          <div class="quiz-tools"><button class="tool-button" id="hintButton">☼ Dame una pista</button><button class="tool-button" id="exampleButton">▤ Ver ejemplo</button><button class="tool-button" id="skipButton">Saltar →</button></div>
+          <div id="hintBox" class="hint-box hidden"></div><div id="feedbackBox" class="feedback-box hidden" role="status"></div>
+          <div class="quiz-bottom"><span>✦ Cada intento cuenta.</span><button class="button button-primary hidden" id="nextQuestion">Siguiente ejercicio →</button></div>
+        </article>
+        <aside class="practice-aside">
+          <article class="panel aside-panel"><div class="aside-icon">🎯</div><h3>Tu misión actual</h3><p>Responde con calma. Si te equivocas, te explicaremos qué pasó y podrás volver a intentarlo.</p><div class="chips"><span>+10 XP por acierto</span><span>Pistas disponibles</span></div></article>
+          <article class="panel aside-panel"><h3>Tu sesión</h3><div class="session-stat"><span class="session-icon green">✓</span><span><b id="sessionCorrect">0 correctas</b><small>en esta sesión</small></span></div><div class="session-stat"><span class="session-icon blue">✎</span><span><b id="sessionTotal">0 intentos</b><small>respuestas comprobadas</small></span></div><div class="tip-box"><b>Un consejo</b><p>Explica cada paso en voz alta. ¡Ayuda a recordar!</p></div></article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="view-games">
+      <div class="page-heading"><div class="eyebrow">APRENDER JUGANDO</div><h1>Hora de <span class="heading-accent">jugar.</span> 🎮</h1><p>Entrena tu cerebro con mini retos y desafíos.</p></div>
+      <div class="game-grid">
+        <article class="game-card game-purple"><span class="game-emoji">⚡</span><div class="game-level">RETO RÁPIDO</div><h2>Reto relámpago</h2><p>Resuelve cinco preguntas y supera tu propio récord.</p><button class="button button-primary" data-game="quick">Jugar ahora →</button></article>
+        <article class="game-card game-peach"><span class="game-emoji">🕵️</span><div class="game-level">PIENSA CON CUIDADO</div><h2>Detective de errores</h2><p>Descubre si una solución matemática está bien o mal.</p><button class="button button-dark" data-game="detective">Investigar →</button></article>
+        <article class="game-card game-mint"><span class="game-emoji">🧠</span><div class="game-level">LÓGICA</div><h2>Desafío de patrones</h2><p>Encuentra el número que continúa la secuencia.</p><button class="button button-dark" data-game="logic">Resolver →</button></article>
+        <article class="game-card game-yellow"><span class="game-emoji">🎲</span><div class="game-level">SORPRESA</div><h2>Pregunta sorpresa</h2><p>Un reto al azar para probar tus conocimientos.</p><button class="button button-dark" data-game="surprise">Sorpréndeme →</button></article>
+        <article class="game-card game-blue"><span class="game-emoji">🪜</span><div class="game-level">SUBE DE NIVEL</div><h2>Tu ruta de aprendizaje</h2><p>Desbloquea nuevos temas a medida que avanzas.</p><button class="button button-dark" data-go="learn">Ver niveles →</button></article>
+        <article class="game-card game-pink"><span class="game-emoji">🌱</span><div class="game-level">VUELVE A INTENTAR</div><h2>Zona de repaso</h2><p>Practica los temas que todavía te cuestan.</p><button class="button button-dark" data-game="review">Repasar →</button></article>
+      </div>
+      <div id="gameArea"></div>
+    </section>
+
+    <section class="view" id="view-progress">
+      <div class="page-heading"><div class="eyebrow">MIRA LO QUE HAS LOGRADO</div><h1>Mi <span class="heading-accent">progreso.</span></h1><p>Cada práctica te ayuda a descubrir lo que ya dominas.</p></div>
+      <div class="stats-grid progress-stats">
+        <article class="stat-card"><div class="stat-icon icon-lilac">★</div><div><span>Experiencia</span><strong id="progressXP">0</strong><small>puntos XP</small></div></article>
+        <article class="stat-card"><div class="stat-icon icon-peach">✎</div><div><span>Ejercicios</span><strong id="progressAnswered">0</strong><small>respondidos</small></div></article>
+        <article class="stat-card"><div class="stat-icon icon-yellow">◎</div><div><span>Precisión</span><strong id="progressAccuracy">—</strong><small>de tus respuestas</small></div></article>
+        <article class="stat-card"><div class="stat-icon icon-mint">♜</div><div><span>Logros</span><strong id="progressBadges">0</strong><small>desbloqueados</small></div></article>
+      </div>
+      <div class="section-heading"><div><div class="eyebrow">POR TEMA</div><h2>Tu dominio matemático</h2><p>Los colores muestran cómo vas en cada tema.</p></div></div>
+      <article class="panel topic-progress-list" id="topicProgress"></article>
+      <div class="section-heading"><div><div class="eyebrow">TUS VICTORIAS</div><h2>Logros y medallas</h2><p>Cada pequeño avance merece celebrarse.</p></div></div>
+      <div class="badge-grid" id="badgesGrid"></div>
+      <button class="button button-subtle reset-button" id="resetProgress">Reiniciar progreso</button>
+    </section>
+
+    <section class="view" id="view-settings">
+      <div class="page-heading"><div class="eyebrow">TU EXPERIENCIA</div><h1>Mis <span class="heading-accent">ajustes.</span></h1><p>Adapta MateAmigos a tu horario y tus preferencias.</p></div>
+      <article class="panel settings-panel">
+        <div class="settings-heading"><span class="settings-big-icon">⚙</span><div><h2>Personaliza tu espacio</h2><p>Estos ajustes se guardan en este navegador.</p></div></div>
+        <div class="setting-row"><div><b>Tu nombre o apodo</b><p>Lo usaremos para saludarte.</p></div><input id="nameInput" class="setting-input" placeholder="Estudiante" maxlength="25"></div>
+        <div class="setting-row"><div><b>Recordatorio diario</b><p>Activa un aviso a la hora que prefieras.</p></div><button class="toggle" id="reminderToggle" aria-pressed="false" aria-label="Activar recordatorio"></button></div>
+        <div class="setting-row"><div><b>Hora de la clase</b><p>Elige tu horario ideal de estudio.</p></div><input type="time" id="reminderTime" class="setting-input" value="17:00"></div>
+        <div class="setting-row"><div><b>Meta diaria</b><p>¿Cuánto tiempo quieres dedicarle?</p></div><select id="dailyGoal" class="setting-input"><option value="5">5 minutos</option><option value="10">10 minutos</option><option value="15">15 minutos</option><option value="20">20 minutos</option><option value="30">30 minutos</option></select></div>
+        <div class="setting-row"><div><b>Probar notificación</b><p>Comprueba si tu navegador puede mostrar un aviso.</p></div><button class="button button-subtle" id="testNotification">Probar aviso</button></div>
+        <div class="settings-note"><b>Sobre los recordatorios</b><p>En esta versión, los avisos funcionan mientras la página permanece abierta. Para recibir notificaciones con el navegador cerrado, hay que publicar la web y configurar notificaciones push.</p></div>
+        <div class="settings-actions"><button class="button button-primary" id="saveSettings">Guardar ajustes</button><button class="button button-subtle" id="redoSurvey">Rehacer encuesta inicial</button></div>
+      </article>
+    </section>
+
+    <footer class="main-footer"><span>∑ MateAmigos</span><span>Hecho para aprender con confianza <b>♥</b></span></footer>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal-backdrop hidden" id="surveyModal" role="dialog" aria-modal="true" aria-labelledby="surveyTitle">
+  <div class="modal panel">
+    <div class="modal-top"><span class="modal-mark">✦</span><button class="icon-button" id="closeSurvey" aria-label="Cerrar">×</button></div>
+    <div class="eyebrow">TU RUTA PERSONALIZADA</div><h2 id="surveyTitle">¡Vamos a conocerte! 👋</h2><p class="modal-intro">Responde esta mini encuesta para ayudarte a empezar por el lugar correcto. No hay respuestas malas.</p>
+    <div class="survey-question"><b>1. ¿Cómo te sientes con las matemáticas?</b><div class="choice-grid" id="surveyLevel"><button class="choice" data-value="beginner">🌱 Estoy empezando</button><button class="choice" data-value="middle">🙂 Entiendo algunas cosas</button><button class="choice" data-value="confident">🚀 Me defiendo bastante</button><button class="choice" data-value="unsure">🤔 No estoy seguro/a</button></div></div>
+    <div class="survey-question"><b>2. ¿Qué tema te cuesta más?</b><div class="choice-grid" id="surveyTopic"><button class="choice" data-value="basics">➕ Operaciones básicas</button><button class="choice" data-value="fractions">🍕 Fracciones</button><button class="choice" data-value="expressions">🔤 Expresiones algebraicas</button><button class="choice" data-value="linear">⚖️ Ecuaciones</button><button class="choice" data-value="powers">⚡ Potencias y raíces</button><button class="choice" data-value="all">🌈 Un poco de todo</button></div></div>
+    <div class="survey-question"><b>3. ¿Cuánto quieres estudiar al día?</b><div class="choice-grid choice-grid-four" id="surveyTime"><button class="choice" data-value="5">5 min</button><button class="choice" data-value="10">10 min</button><button class="choice" data-value="15">15 min</button><button class="choice" data-value="20">20+ min</button></div></div>
+    <button class="button button-primary modal-submit" id="finishSurvey">Crear mi plan personalizado <span>→</span></button>
+  </div>
+</div>
+<div class="celebration-layer" id="celebrationLayer" aria-hidden="true"></div>
+<script src="app.js"></script>
+</body>
+</html>
